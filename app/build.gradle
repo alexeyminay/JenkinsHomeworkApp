@@ -6,8 +6,6 @@ plugins {
 android {
     compileSdk 31
     buildToolsVersion "31.0.0"
-    aaptOptions.cruncherEnabled = false
-    aaptOptions.useNewCruncher = false
 
     defaultConfig {
         applicationId "com.alexey.minay.jenkinshomeworkapp"
