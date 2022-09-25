@@ -18,7 +18,8 @@ pipeline {
                        sh "./gradlew detekt"
                    }
                    catch (exc) {
-                       archiveArtifacts(artifacts: 'app/build/outputs/**', allowEmptyArchive: true)
+                       archiveArtifacts(artifacts: 'app/build/reports/**', allowEmptyArchive: true)
+                       throw exc
                    }
                 }
              }
