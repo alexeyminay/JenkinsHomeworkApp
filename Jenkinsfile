@@ -11,12 +11,6 @@ pipeline {
                 sh "chmod +x gradlew"
             }
         }
-        stage('checkout') {
-            steps {
-                echo "use ${branch} branch"
-                checkout dev
-            }
-        }
         stage("build") {
             steps {
                 sh "./gradlew assembleDebug"
