@@ -19,7 +19,6 @@ pipeline {
                    }
                    catch (exc) {
                        archiveArtifacts(artifacts: 'app/build/outputs/**', allowEmptyArchive: true)
-                       throw
                    }
                 }
              }
