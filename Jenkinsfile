@@ -25,7 +25,7 @@ pipeline {
         }
         stage("build") {
             steps {
-                echo "Database engine"
+                echo "Branch = ${branch}"
                 sh "./gradlew assembleDebug"
             }
         }
