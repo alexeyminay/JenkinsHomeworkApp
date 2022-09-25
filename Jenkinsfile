@@ -32,7 +32,7 @@ pipeline {
         }
     }
     post {
-        always {
+        success {
             archiveArtifacts(artifacts: 'app/build/outputs/**', allowEmptyArchive: true)
         }
     }
