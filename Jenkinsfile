@@ -13,27 +13,23 @@ pipeline {
         }
         stage("detekt check") {
             steps {
-                sh "./gradlew detekt"
+                try {
+                    sh "./gradlew detekt"
+                }
+                catch (exc) {
+                    sh "ECHO detekt failed"
+                }
+            }
+        }
+        stage("build") {
+            steps {
+                sh "./gradlew assembleDebug"
             }
         }
     }
     post {
         always {
             archiveArtifacts(artifacts: 'app/build/outputs/**', allowEmptyArchive: true)
-        }
-        success {
-            stages {
-                stage("build") {
-                    steps {
-                        sh "./gradlew assembleDebug"
-                    }
-                }
-                post {
-                    always {
-                        archiveArtifacts(artifacts: 'app/build/outputs/**', allowEmptyArchive: true)
-                    }
-                }
-            }
         }
     }
 }
