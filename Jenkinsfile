@@ -15,7 +15,7 @@ pipeline {
     }
     post {
         always {
-            archiveArtifacts(artifacts: '**/build/reports/**', allowEmptyArchive: true)
+            archiveArtifacts(artifacts: 'app/build/reports/**', allowEmptyArchive: true)
         }
     }
 }
