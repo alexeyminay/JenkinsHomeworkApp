@@ -12,18 +12,16 @@ pipeline {
             }
         }
         stage("detekt check") {
-            steps {
-                try {
-                    sh "./gradlew detekt"
-                }
-                catch (exc) {
-                    sh "ECHO detekt failed"
-                }
-            }
+             try {
+                 sh "./gradlew detekt"
+             }
+             catch (exc) {
+                 sh "ECHO detekt failed"
+             }
         }
         stage("build") {
             steps {
-                sh "./gradlew assembleDebug"
+                sh "./gradlew assembleDebug"K
             }
         }
     }
