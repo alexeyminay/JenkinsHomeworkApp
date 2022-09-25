@@ -18,7 +18,8 @@ pipeline {
                        sh "./gradlew detekt"
                    }
                    catch (exc) {
-                       sh "ECHO detekt failed"
+                       archiveArtifacts(artifacts: 'app/build/outputs/**', allowEmptyArchive: true)
+                       throw
                    }
                 }
              }
