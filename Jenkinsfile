@@ -5,6 +5,13 @@ pipeline {
             args '-it --memory=8g --cpus="4" -u root'
         }
     }
+    parameters {
+        string(
+            name: "branch",
+            defaultValue: "main",
+            description: "Бренч по умолчанию"
+        )
+    }
     stages {
         stage("init") {
             steps {
@@ -13,8 +20,12 @@ pipeline {
         }
         stage('checkout') {
             steps {
-                echo "use ${branch} branch"
-                checkout dev
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/"$branch"']],
+                    extensions: [],
+                    userRemoteConfigs: [[url: 'https://github.com/alexeyminay/JenkinsHomeworkApp.git']]
+                ])
             }
         }
         stage("build") {
