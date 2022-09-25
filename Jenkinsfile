@@ -18,7 +18,7 @@ pipeline {
                        sh "./gradlew detekt"
                    }
                    catch (exc) {
-                       sh "ECHO detekt failed"
+                       sh "ECHO detekt failed 2"
                    }
                 }
              }
