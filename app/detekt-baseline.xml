@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>NewLineAtEndOfFile:ExampleUnitTest.kt$com.alexey.minay.jenkinshomeworkapp.ExampleUnitTest.kt</ID>
+    <ID>NewLineAtEndOfFile:MainActivity.kt$com.alexey.minay.jenkinshomeworkapp.MainActivity.kt</ID>
+    <ID>WildcardImport:ExampleUnitTest.kt$import org.junit.Assert.*</ID>
+  </CurrentIssues>
+</SmellBaseline>
