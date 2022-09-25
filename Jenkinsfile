@@ -9,7 +9,6 @@ pipeline {
         stage("init") {
             steps {
                 sh "chmod +x gradlew"
-                sh "${branch}"
             }
         }
         stage("detekt check") {
