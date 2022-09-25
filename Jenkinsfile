@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'alexeyminay/android-docker-task01:1.0.8'
+            image 'alexeyminay/android-docker-task01:1.0.6'
             args '-it --memory=8g --cpus="4" -u root'
         }
     }
@@ -9,6 +9,10 @@ pipeline {
         stage("init") {
             steps {
                 sh "chmod +x gradlew"
+            }
+        }
+        stage("build") {
+            steps {
                 sh "./gradlew assembleDebug"
             }
         }
