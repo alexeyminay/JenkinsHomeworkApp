@@ -8,7 +8,7 @@ pipeline {
     parameters {
         string(
             name: "branch",
-            defaultValue: "main",
+            defaultValue: "*/main",
             description: "Бренч по умолчанию"
         )
     }
@@ -22,7 +22,7 @@ pipeline {
             steps {
                 checkout([
                     $class: 'GitSCM',
-                    branches: [[name: '*/"$branch"']],
+                    branches: [[name: params.branch]],
                     extensions: [],
                     userRemoteConfigs: [[url: 'https://github.com/alexeyminay/JenkinsHomeworkApp.git']]
                 ])
