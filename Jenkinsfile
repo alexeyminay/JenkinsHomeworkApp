@@ -11,15 +11,29 @@ pipeline {
                 sh "chmod +x gradlew"
             }
         }
-        stage("build") {
+        stage("detekt check") {
             steps {
-                sh "./gradlew assembleDebug"
+                sh "./gradlew detekt"
             }
         }
     }
     post {
         always {
             archiveArtifacts(artifacts: 'app/build/outputs/**', allowEmptyArchive: true)
+        }
+        success {
+            stages {
+                stage("build") {
+                    steps {
+                        sh "./gradlew assembleDebug"
+                    }
+                }
+                post {
+                    always {
+                        archiveArtifacts(artifacts: 'app/build/outputs/**', allowEmptyArchive: true)
+                    }
+                }
+            }
         }
     }
 }
