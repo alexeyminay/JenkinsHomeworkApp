@@ -21,7 +21,7 @@ pipeline {
         }
         stage("build") {
             steps {
-                sh "./gradlew assembleDebug"K
+                sh "./gradlew assembleDebug"
             }
         }
     }
