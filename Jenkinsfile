@@ -9,6 +9,7 @@ pipeline {
         stage("init") {
             steps {
                 sh "chmod +x gradlew"
+                sh "${branch}"
             }
         }
         stage("detekt check") {
@@ -18,7 +19,7 @@ pipeline {
                        sh "./gradlew detekt"
                    }
                    catch (exc) {
-                       sh "ECHO detekt failed 2"
+                       sh "ECHO detekt failed"
                    }
                 }
              }
