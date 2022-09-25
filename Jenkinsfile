@@ -26,8 +26,14 @@ pipeline {
         }
         stage("build") {
             steps {
-                echo "Branch = ${branch}"
-                sh "./gradlew assembleDebug"
+                script {
+                    if ("${branch}".contains('release')) {
+                        sh "./gradlew assembleRelease"
+                    }
+                    else {
+                        sh "./gradlew assembleDebug"
+                    }
+                }
             }
         }
     }
