@@ -14,7 +14,7 @@ pipeline {
         stage('checkout') {
             steps {
                 echo "use ${branch} branch"
-                checkout "${branch}"
+                checkout dev
             }
         }
         stage("build") {
