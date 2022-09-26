@@ -37,6 +37,11 @@ pipeline {
                 }
             }
         }
+        stage("tests") {
+            steps {
+                sh "./gradlew tests"
+             }
+        }
     }
     post {
         success {
