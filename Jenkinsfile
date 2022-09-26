@@ -9,6 +9,7 @@ pipeline {
         stage("init") {
             steps {
                 sh "chmod +x gradlew"
+                sh "./gradlew clean"
             }
         }
         stage("detekt check") {
@@ -30,7 +31,7 @@ pipeline {
                     if ("${branch}".contains('release')) {
                         sh "./gradlew assembleRelease"
                     }
-                    else {
+                    if ("${branch}".contains('feature') || "${branch}".contains('bugfix')) {
                         sh "./gradlew assembleDebug"
                     }
                 }
