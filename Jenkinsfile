@@ -42,6 +42,11 @@ pipeline {
                 sh "./gradlew tests"
              }
         }
+        stage("publish") {
+            steps {
+                sh "./gradlew publishToMavenLocal"
+             }
+        }
     }
     post {
         success {
