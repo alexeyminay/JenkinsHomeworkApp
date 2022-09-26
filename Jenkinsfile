@@ -39,7 +39,15 @@ pipeline {
         }
         stage("tests") {
             steps {
-                sh "./gradlew test"
+                script {
+                   try {
+                      sh "./gradlew test"
+                   }
+                   catch (exc) {
+                       archiveArtifacts(artifacts: '**/build/reports/**', allowEmptyArchive: true)
+                       throw exc
+                   }
+                }
              }
         }
         stage("publish") {
