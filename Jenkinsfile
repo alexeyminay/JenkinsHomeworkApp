@@ -39,7 +39,7 @@ pipeline {
         }
         stage("tests") {
             steps {
-                sh "./gradlew tests"
+                sh "./gradlew test"
              }
         }
         stage("publish") {
