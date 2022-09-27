@@ -33,9 +33,7 @@ pipeline {
                                          string(credentialsId: 'android-store-password', variable: 'MY_STORE_PASSWORD'),
                                          usernamePassword(credentialsId: 'android-key', usernameVariable: 'MY_KEY_ALIAS', passwordVariable: 'MY_KEY_PASSWORD')]) {
 
-                            dir ('android-app-root-directory') {
-                                sh 'gradle clean bundleRelease'
-                            }
+                            sh 'gradle clean bundleRelease'
                         }
                     }
 
