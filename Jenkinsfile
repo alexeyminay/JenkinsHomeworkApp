@@ -29,8 +29,16 @@ pipeline {
             steps {
                 script {
                     if ("${branch}".contains('release')) {
-                        sh "./gradlew assembleRelease"
+                        withCredentials([file(credentialsId: 'android-store-file', variable: 'MY_STORE_FILE'),
+                                         string(credentialsId: 'android-store-password', variable: 'MY_STORE_PASSWORD'),
+                                         usernamePassword(credentialsId: 'android-key', usernameVariable: 'MY_KEY_ALIAS', passwordVariable: 'MY_KEY_PASSWORD')]) {
+
+                            dir ('android-app-root-directory') {
+                                sh 'gradle clean bundleRelease'
+                            }
+                        }
                     }
+
                     if ("${branch}".contains('feature') || "${branch}".contains('bugfix')) {
                         sh "./gradlew assembleDebug"
                     }
