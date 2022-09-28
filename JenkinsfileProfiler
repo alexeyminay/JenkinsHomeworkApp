@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'alexeyminay/android-docker-task01:1.0.10'
+            image 'alexeyminay/android-docker-task01:1.0.11'
             args '-it --memory=8g --cpus="4" -u root'
         }
     }
