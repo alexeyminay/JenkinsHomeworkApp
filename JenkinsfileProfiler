@@ -9,7 +9,6 @@ pipeline {
         stage("init") {
             steps {
                 sh "chmod +x gradlew"
-                sh "chmod +x gradle-profiler"
                 sh "./gradlew clean"
             }
         }
