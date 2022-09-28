@@ -13,7 +13,7 @@ pipeline {
                 sh "./gradlew clean"
             }
         }
-        stage("init") {
+        stage("profiler") {
             steps {
                 sh "gradle-profiler --benchmark --project-dir . assembleDebug"
             }
