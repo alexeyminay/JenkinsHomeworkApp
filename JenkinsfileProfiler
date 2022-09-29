@@ -18,4 +18,9 @@ pipeline {
             }
         }
     }
+    post {
+        success {
+            archiveArtifacts(artifacts: '../../../home/gradle/gradle-profiler/build/install/gradle-profiler/bin/profile-out/**', allowEmptyArchive: true)
+        }
+    }
 }
